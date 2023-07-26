@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!DOCTYPE sql-map-config PUBLIC "-//iBATIS.com//DTD SQL Map Config 1.0//EN" "http://www.ibatis.com/dtd/sql-map-config.dtd">
+<sql-map-config>
+  <properties resource="database.properties"/>
+  
+  <settings 	
+	maxExecute="0" 	
+	maxExecutePerConnection="0" 
+	maxTransactions="300"
+    cacheModelsEnabled="false"
+	statementCacheSize="0"
+    useBeansMetaClasses="false" 
+	useGlobalTransactions="false"
+  />
+
+  <datasource name="game_db"
+    factory-class="com.pwl.framework.db.factory.TomcatDataSourceFactory" 
+	default="true">
+    <property name="JDBC.Driver" value="${Driver}"/>
+    <property name="JDBC.ConnectionURL" value="${Url}"/>
+    <property name="JDBC.Username" value="${Username}"/>
+    <property name="JDBC.Password" value="${Password}"/>
+	<property name="JDBC.DefaultAutoCommit" value="false" />
+    <!-- The following are optional -->
+    <property name="Pool.MaximumActiveConnections" value="300"/>
+	<property name="Pool.MaximumIdleConnections" value="30"/>
+	<property name="Pool.MaximumWait" value="10000"/>
+	<property name="Pool.ValidationQuery" value="select 1"/>
+	<property name="Pool.LogAbandoned" value="false"/>
+	<property name="Pool.RemoveAbandoned" value="true"/>
+	<property name="Pool.RemoveAbandonedTimeout" value="240"/>
+  </datasource>
+  
+  <sql-map resource="com/beiyou/greedysnake/mysql/ibatis/dao/User.xml" />
+  <sql-map resource="com/beiyou/greedysnake/mysql/ibatis/dao/UserGameRecord.xml" />
+  <sql-map resource="com/beiyou/greedysnake/mysql/ibatis/dao/UserGameScore.xml" />
+	
+</sql-map-config>

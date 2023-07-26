@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dao-config
+    PUBLIC "-//iBATIS.com//DTD DAO Configuration 1.0//EN"
+    "http://www.ibatis.com/dtd/dao.dtd">
+<dao-config>
+  <context name="MySQLDaoManager" default="true">
+    <transaction-pool implementation="com.ibatis.db.dao.jdbc.SqlMapDaoTransactionPool">
+      <property name="sql-map-config-file" value="sql-map-config-db.xml"/>
+    </transaction-pool>
+    <dao-factory>
+		
+		<dao name="User" implementation="com.beiyou.greedysnake.mysql.ibatis.dao.UserDao"/>
+		<dao name="UserGameRecord" implementation="com.beiyou.greedysnake.mysql.ibatis.dao.UserGameRecordDao"/>
+		<dao name="UserGameScore" implementation="com.beiyou.greedysnake.mysql.ibatis.dao.UserGameScoreDao"/>
+        
+	</dao-factory>
+  </context>
+	
+</dao-config>

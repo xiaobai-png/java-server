@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sql-map
+    PUBLIC "-//iBATIS.com//DTD SQL Map 1.0//EN"
+    "http://www.ibatis.com/dtd/sql-map.dtd">
+<sql-map name="User">
+	<result-map name="result" class="com.beiyou.greedysnake.mysql.ibatis.entity.User">
+		<property name="id" column="id"/>
+		<property name="username" column="username"/>
+		<property name="password" column="password"/>
+	</result-map>
+	
+
+	<mapped-statement name="getUserById" result-map="result">
+		<![CDATA[
+		select id,
+			username,
+			password
+			from user
+			where id=#value#
+		]]>
+	</mapped-statement>
+	
+	<mapped-statement name="getUserByName" result-map="result">
+		<![CDATA[
+		select id,
+			username,
+			password
+			from user
+			where username=#value#
+		]]>
+	</mapped-statement>
+	
+	<mapped-statement name="getUserByNickName" result-map="result">
+		<![CDATA[
+		select id,
+			username,
+			password
+			from user
+			where nickname=#value#
+		]]>
+	</mapped-statement>
+	
+	<mapped-statement name="setUserByName">
+		<![CDATA[
+		update user
+		 set password = #pass#
+		 where username = #name#
+		]]>
+	</mapped-statement>
+	
+
+</sql-map>

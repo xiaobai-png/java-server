@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sql-map
+    PUBLIC "-//iBATIS.com//DTD SQL Map 1.0//EN"
+    "http://www.ibatis.com/dtd/sql-map.dtd">
+<sql-map name="UserGameScore">  
+	<result-map name="grade" class="com.beiyou.greedysnake.mysql.ibatis.entity.UserGameScore">
+		<property name="id" column="id"/>
+		<property name="uid" column="uid"/>
+		<property name="grade" column="score"/>
+	</result-map>
+	
+	
+	<mapped-statement name="insertUserGrade">
+		<![CDATA[
+		insert into usergamescore(uid,score)
+			values(#uid#, #grade#)
+		]]>
+	</mapped-statement>
+	
+	<mapped-statement name="getUserGrade" result-map="grade">
+		<![CDATA[
+		select id,uid,score
+			from usergamescore 
+			where uid=#value#
+		]]>
+	</mapped-statement>
+	
+	<mapped-statement name="updateUserGrade">
+		<![CDATA[
+		update usergamescore
+			set score = #grade#
+			where uid = #uid#
+		]]>
+	</mapped-statement>
+</sql-map>

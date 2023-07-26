@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sql-map
+    PUBLIC "-//iBATIS.com//DTD SQL Map 1.0//EN"
+    "http://www.ibatis.com/dtd/sql-map.dtd">
+<sql-map name="UserGameRecord">
+
+	<result-map name="time" class="com.beiyou.greedysnake.mysql.ibatis.entity.UserGameRecord">
+		<property name="id" column="id"/>
+		<property name="uid" column="uid"/>
+		<property name="timebegin" column="timebegin"/>
+		<property name="timeend" column="timeend"/>
+	</result-map>
+	
+		<mapped-statement name="beginTimer">
+		<![CDATA[
+		insert into usergamerecord(uid, createtime)
+			values(#uid#, #timebegin#)
+		]]>
+	</mapped-statement>
+	
+	<mapped-statement name="updateTime">
+		<![CDATA[
+		update usergamerecord
+			set updatetime = #timeend#
+			where uid = #uid# and createtime = #timebegin#
+		]]>
+	</mapped-statement>
+	
+	
+	<mapped-statement name="updateRank">
+		<![CDATA[
+		update usergamerecord
+			set gamerank = #gamerank#
+			where uid = #uid# and createtime = #timebegin#
+		]]>
+	</mapped-statement>
+</sql-map>

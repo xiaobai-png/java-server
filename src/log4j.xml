@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  <!-- ================================================================= -->
+  <!--                       a console appender                          -->
+  <!--     debug can be turned off by setting level of root to "off"     -->
+  <!-- ================================================================= -->
+
+  <appender name="bow.console.log" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d [%t] %p - %m%n"/>
+    </layout>
+  </appender>
+  <appender name="bow.file.log" class="org.apache.log4j.FileAppender">
+    <param name="File" value="D:/web.log"/>
+    <param name="Append" value="false"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%t %-5p %c{2} - %m%n"/>
+    </layout>
+  </appender>
+  <!--  use this to turn on debug to a rolling file. -->
+  <root>
+    <level value="error"/>
+    <appender-ref ref="bow.console.log"/>
+  </root>
+  
+  <!--  use this to turn on debug to console. -->
+
+  <!--
+    <root>
+      <level value="debug" />
+      <appender-ref ref="bow.file.log" />
+    </root>
+  -->
+
+  <!--  use this to turn off debug. -->
+  <!--
+  <root>
+    <level value="off" />
+    <appender-ref ref="wsota-rc.console.log" />
+  </root>
+  -->
+</log4j:configuration>
